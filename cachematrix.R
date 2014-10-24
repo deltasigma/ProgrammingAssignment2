@@ -37,6 +37,7 @@ cacheSolve <- function(x, ...) {
                 return(i)
         }
         
+        ## Calculate the inverted matrix for the ones without cache
         data <- x$get()
         i <- solve(data, ...)
         x$setinverse(i)
