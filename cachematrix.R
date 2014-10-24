@@ -25,3 +25,20 @@ makeCacheMatrix <- function(x = matrix()) {
         #
         list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
+
+## Write a short comment describing this function
+## This function invert a matrix. But first it looks if the matrix has already
+## an inverted version calculated
+cacheSolve <- function(x, ...) {
+        ## Test for inverted matrix and return it if available
+        i <- x$getinverse()
+        if(!is.null(i)) {
+                message("getting cached data")
+                return(i)
+        }
+        
+        data <- x$get()
+        i <- solve(data, ...)
+        x$setinverse(i)
+        i
+}
